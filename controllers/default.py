@@ -3,10 +3,29 @@
 # This is a sample controller
 # this file is released under public domain and you can use without limitations
 # -------------------------------------------------------------------------
-
+import json
 # ---- example index page ----
 def index():
     return dict(message="REGISTRO ESTUDIANTES")
+
+def api_register_student():
+    
+    #API para el registro de estudiantes.
+    
+    response.headers['Content-Type'] = 'application/json'
+
+    # Obtener datos de la solicitud
+    data = json.loads(request.body.read().decode('utf-8'))
+
+    # Validar los datos (puedes agregar más validaciones según tus necesidades)
+    if 'nombres' not in data or 'apellidos' not in data or 'tipodoc' not in data or 'numerodoc' not in data:
+        return json.dumps({"error": "Datos incompletos"})
+
+    # Crear el estudiante en la base de datos
+    student_id = db.estudiante.insert(nombres=data['nombres'], apellidos=data['apellidos'], tipodoc=data['tipodoc'], numerodoc=data['numerodoc'])
+
+    # Respuesta exitosa
+    return json.dumps({"success": True, "student_id": "student_id"})
 
 # ---- API (example) -----
 @auth.requires_login()

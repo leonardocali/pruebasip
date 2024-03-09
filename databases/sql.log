@@ -53,3 +53,12 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
+timestamp: 2024-03-09T12:53:03.831024
+CREATE TABLE "estudiante"(
+    "id" SERIAL PRIMARY KEY,
+    "nombres" VARCHAR(512),
+    "apellidos" VARCHAR(512),
+    "tipodoc" VARCHAR(512),
+    "numerodoc" VARCHAR(512)
+);
+success!

@@ -7,6 +7,7 @@
 from gluon.contrib.appconfig import AppConfig
 from gluon.tools import Auth
 
+
 # -------------------------------------------------------------------------
 # This scaffolding model makes your app work on Google App Engine too
 # File is released under public domain and you can use without limitations
@@ -153,3 +154,12 @@ if configuration.get('scheduler.enabled'):
 # after defining tables, uncomment below to enable auditing
 # -------------------------------------------------------------------------
 # auth.enable_record_versioning(db)
+    
+db = DAL('postgres://postgres:admin@localhost/gestionestudiantes')
+
+db.define_table('estudiante',
+    Field('nombres', requires=IS_NOT_EMPTY()),
+    Field('apellidos', requires=IS_NOT_EMPTY()),
+    Field('tipodoc', requires=IS_NOT_EMPTY()),
+    Field('numerodoc', requires=IS_NOT_EMPTY()),
+)

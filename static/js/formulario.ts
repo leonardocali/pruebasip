@@ -6,7 +6,13 @@ const valoresForm = document.querySelector('#regEstForm') as HTMLFormElement;
 
 valoresForm.addEventListener('submit', event => {
     event.preventDefault();
-    console.log(nombreForm.value,apellidoForm.value,tipoDocuForm.value,numeroDocuForm.value);
+    const objetofinal = {
+        nombres: nombreForm.value,
+        apellidos: apellidoForm.value,
+        tipo_documento: tipoDocuForm.value,
+        numero_documento: numeroDocuForm.value
+    }
+    console.log(objetofinal);
 })
 
 
