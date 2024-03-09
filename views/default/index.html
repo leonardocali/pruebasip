@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Estudiante</title>
+  <link rel="stylesheet" href="{{=URL('static', 'css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{=URL('static', 'css/estilos.css')}}">
+</head>
+
+<body>
+  <h1>{{=message}}</h1>
+  <br>
+  <section class="regEstForm">
+    <form id="regEstForm">
+      <div class="mb-3">
+        <label class="form-label">
+          Nombres:
+          <input type="text" id="nombre" name="nombre" required class="form-control">
+        </label>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">
+          Apellidos:
+          <input type="text" id="apellido" name="apellido" required class="form-control">
+        </label>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tipo de documento:
+          <select id="tipo-documento" name="tipo-documento" class="form-select">
+            <option value="TI">TI</option>
+            <option value="RC">RC</option>
+            <option value="CC">CC</option>
+            <option value="PA">PA</option>
+          </select>
+        </label>
+      </div>
+      <div class="mb3">
+        <label class="form-label">
+          Número de documento:
+          <input type="text" id="numero-documento" name="numero-documento" required class="form-control">
+        </label>
+      </div>
+      <br>
+      <input type="submit" value="Registro Estudiante" class="btn btn-primary boton-Registro">
+    </form>
+  </section>
+  <script src="{{=URL('static', 'js/formulario.js')}}"></script>
+</body>
+
+</html>
