@@ -1,6 +1,8 @@
 body {
   margin-top: 30px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: rgb(0,212,255);
+  background: radial-gradient(circle, rgba(0,212,255,1) 0%, rgba(79,79,219,1) 75%, rgba(0,212,255,1) 100%);
 }
 
 h1 {
