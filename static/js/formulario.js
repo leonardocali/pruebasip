@@ -1,7 +1,7 @@
 var nombreForm = document.querySelector('#nombre');
 var apellidoForm = document.querySelector('#apellido');
-var tipoDocuForm = document.querySelector('#tipo-documento');
-var numeroDocuForm = document.querySelector('#numero-documento');
+var tipoDocuForm = document.querySelector('#tipodocumento');
+var numeroDocuForm = document.querySelector('#numdoc');
 var valoresForm = document.querySelector('#regEstForm');
 valoresForm.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -11,5 +11,5 @@ valoresForm.addEventListener('submit', function (event) {
         tipo_documento: tipoDocuForm.value,
         numero_documento: numeroDocuForm.value
     };
-    console.log(objetofinal);
+    return objetofinal;
 });

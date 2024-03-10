@@ -28,7 +28,7 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Tipo de documento:
-          <select id="tipo-documento" name="tipo-documento" class="form-select">
+          <select id="tipodocumento" name="tipodocumento" class="form-select">
             <option value="TI">TI</option>
             <option value="RC">RC</option>
             <option value="CC">CC</option>
@@ -39,14 +39,41 @@
       <div class="mb3">
         <label class="form-label">
           Número de documento:
-          <input type="text" id="numero-documento" name="numero-documento" required class="form-control">
+          <input type="text" id="numdoc" name="numdoc" required class="form-control">
         </label>
       </div>
       <br>
-      <input type="submit" value="Registro Estudiante" class="btn btn-primary boton-Registro">
+      <input type="submit" value="Registro Estudiante" class="btn btn-primary boton-Registro" onclick="guardarDatos()">
     </form>
   </section>
   <script src="{{=URL('static', 'js/formulario.js')}}"></script>
+  <script src="{{=URL('static', 'js/jquery.js')}}"></script>
+<script>
+    function guardarDatos() {
+        var datos = {
+          nombres: $('#nombre').val(),
+          apellidos: $('#apellido').val(),
+          tipodoc: $('#tipodocumento').val(),
+          numerodoc: $('#numdoc').val()
+        }
+        // Realizar la solicitud AJAX al API
+        $.ajax({
+            url: '{{=URL("default", "api_guardar_datos")}}',
+            contentType: 'application/json; charset=utf-8',
+            type: 'POST',
+            data: JSON.stringify(datos),
+            dataType: "json",
+            success: function(response) {
+                alert('Datos guardados con éxito');
+                console.log(response)
+                // Puedes hacer más acciones después de guardar los datos
+            },
+            error: function(xhr, status, error) {
+                alert('Error al guardar datos: ' + xhr.responseText);
+            }
+        });
+    }
+</script>
 </body>
 
 </html>

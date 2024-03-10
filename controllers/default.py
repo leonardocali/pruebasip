@@ -4,31 +4,39 @@
 # this file is released under public domain and you can use without limitations
 # -------------------------------------------------------------------------
 import json
+
 # ---- example index page ----
 def index():
     return dict(message="REGISTRO ESTUDIANTES")
 
-def api_register_student():
-    
-    #API para el registro de estudiantes.
-    
-    response.headers['Content-Type'] = 'application/json'
+# controllers/default.py
 
-    # Obtener datos de la solicitud
-    data = json.loads(request.body.read().decode('utf-8'))
 
-    # Validar los datos (puedes agregar más validaciones según tus necesidades)
-    if 'nombres' not in data or 'apellidos' not in data or 'tipodoc' not in data or 'numerodoc' not in data:
-        return json.dumps({"error": "Datos incompletos"})
+def api_guardar_datos():
+   # Asegúrate de que la solicitud sea de tipo POST
+    if request.env.request_method != 'POST':
+        raise HTTP(400, "Bad Request: Se espera una solicitud POST")
 
-    # Crear el estudiante en la base de datos
-    student_id = db.estudiante.insert(nombres=data['nombres'], apellidos=data['apellidos'], tipodoc=data['tipodoc'], numerodoc=data['numerodoc'])
+    # Lee los datos del cuerpo de la solicitud POST (en formato JSON)
+    try:
+        datos = json.loads(request.body.read())
+        print(datos)
+    except ValueError:
+        raise HTTP(400, "Bad Request: Datos JSON inválidos")
 
-    # Respuesta exitosa
-    return json.dumps({"success": True, "student_id": "student_id"})
+    # Aquí puedes procesar y guardar los datos según tus necesidades
+    # Por ejemplo, guardarlos en una base de datos
+    db.estudiante.insert(**datos)
+
+    return response.json({"mensaje": "Datos guardados exitosamente", "datos":datos})
+   
+
+
+
+
 
 # ---- API (example) -----
-@auth.requires_login()
+""" @auth.requires_login()
 def api_get_user_email():
     if not request.env.request_method == 'GET': raise HTTP(403)
     return response.json({'status':'success', 'email':auth.user.email})
@@ -49,7 +57,7 @@ def wiki():
 
 # ---- Action for login/register/etc (required for auth) -----
 def user():
-    """
+    
     exposes:
     http://..../[app]/default/user/login
     http://..../[app]/default/user/logout
@@ -63,15 +71,15 @@ def user():
         @auth.requires_permission('read','table name',record_id)
     to decorate functions that need access control
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
-    """
+    
     return dict(form=auth())
 
 # ---- action to server uploaded static content (required) ---
 @cache.action()
 def download():
-    """
+    
     allows downloading of uploaded files
     http://..../[app]/default/download/[filename]
-    """
-    return response.download(request, db)
+    
+    return response.download(request, db) """
 

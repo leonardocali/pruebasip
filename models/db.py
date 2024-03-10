@@ -155,7 +155,7 @@ if configuration.get('scheduler.enabled'):
 # -------------------------------------------------------------------------
 # auth.enable_record_versioning(db)
     
-db = DAL('postgres://postgres:admin@localhost/gestionestudiantes')
+db = DAL('postgres://postgres:adminleo@localhost/gestionestudiantes')
 
 db.define_table('estudiante',
     Field('nombres', requires=IS_NOT_EMPTY()),

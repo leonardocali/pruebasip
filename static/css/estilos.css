@@ -17,3 +17,8 @@ align-items: center;
 .boton-Registro{
   width: 250px;
 }
+
+.boton-Registro:hover{
+  width: 250px;
+  background-color: firebrick;
+}
