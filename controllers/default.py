@@ -20,15 +20,16 @@ def api_guardar_datos():
     # Lee los datos del cuerpo de la solicitud POST (en formato JSON)
     try:
         datos = json.loads(request.body.read())
-        print(datos)
     except ValueError:
         raise HTTP(400, "Bad Request: Datos JSON inválidos")
 
     # Aquí puedes procesar y guardar los datos según tus necesidades
     # Por ejemplo, guardarlos en una base de datos
-    db.estudiante.insert(**datos)
-
-    return response.json({"mensaje": "Datos guardados exitosamente", "datos":datos})
+    if datos['nombres'] == '' or datos['apellidos'] == '' or datos['numerodoc'] == '':
+        return response.json({"mensaje": 1})
+    else:
+        db.estudiante.insert(**datos)
+        return response.json({"mensaje": "Datos guardados exitosamente"})
    
 
 

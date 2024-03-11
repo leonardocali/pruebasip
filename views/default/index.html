@@ -17,13 +17,13 @@
       <div class="mb-3">
         <label class="form-label">
           Nombres:
-          <input type="text" id="nombre" name="nombre" required class="form-control">
+          <input type="text" id="nombre" name="nombre" class="form-control">
         </label>
       </div>
       <div class="mb-3">
         <label class="form-label">
           Apellidos:
-          <input type="text" id="apellido" name="apellido" required class="form-control">
+          <input type="text" id="apellido" name="apellido" class="form-control">
         </label>
       </div>
       <div class="mb-3">
@@ -39,7 +39,7 @@
       <div class="mb3">
         <label class="form-label">
           Número de documento:
-          <input type="text" id="numdoc" name="numdoc" required class="form-control">
+          <input type="text" id="numdoc" name="numdoc" class="form-control">
         </label>
       </div>
       <br>
@@ -64,9 +64,17 @@
             data: JSON.stringify(datos),
             dataType: "json",
             success: function(response) {
-                alert('Datos guardados con éxito');
-                console.log(response)
-                // Puedes hacer más acciones después de guardar los datos
+                if(response.mensaje == 1){
+                  alert("Por favor validar que los campos no esten vacioes son obligatorios");
+                }
+                else{
+                  alert('Datos guardados con éxito');
+                  $('#nombre').val('');
+                  $('#apellido').val('');
+                  $('#tipodocumento').val('');
+                  $('#numdoc').val('');
+                  console.log(response)
+                }
             },
             error: function(xhr, status, error) {
                 alert('Error al guardar datos: ' + xhr.responseText);
