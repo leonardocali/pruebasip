@@ -7,7 +7,7 @@ import json
 
 # ---- example index page ----
 def index():
-    return dict(message="REGISTRO ESTUDIANTES")
+    return dict(message1="REGISTRO ESTUDIANTES", message2="DATOS PADRES DE FAMILIA")
 
 # controllers/default.py
 

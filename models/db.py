@@ -162,4 +162,5 @@ db.define_table('estudiante',
     Field('apellidos', requires=IS_NOT_EMPTY()),
     Field('tipodoc', requires=IS_NOT_EMPTY()),
     Field('numerodoc', requires=IS_NOT_EMPTY()),
+    Field('grado', requires=IS_NOT_EMPTY()),
 )

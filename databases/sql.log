@@ -71,3 +71,6 @@ CREATE TABLE "estudiante"(
     "numerodoc" VARCHAR(512)
 );
 success!
+timestamp: 2024-03-12T22:38:52.127002
+ALTER TABLE "estudiante" ADD "grado" VARCHAR(512);
+success!
