@@ -10,78 +10,16 @@
 </head>
 
 <body>
-  <h1>{{=message}}</h1>
+  <h1>{{=message1}}</h1>
   <br>
-  <section class="regEstForm">
-    <form id="regEstForm">
-      <div class="mb-3">
-        <label class="form-label">
-          Nombres:
-          <input type="text" id="nombre" name="nombre" class="form-control">
-        </label>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">
-          Apellidos:
-          <input type="text" id="apellido" name="apellido" class="form-control">
-        </label>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tipo de documento:
-          <select id="tipodocumento" name="tipodocumento" class="form-select">
-            <option value="TI">TI</option>
-            <option value="RC">RC</option>
-            <option value="CC">CC</option>
-            <option value="PA">PA</option>
-          </select>
-        </label>
-      </div>
-      <div class="mb3">
-        <label class="form-label">
-          Número de documento:
-          <input type="text" id="numdoc" name="numdoc" class="form-control">
-        </label>
-      </div>
-      <br>
-      <input type="submit" value="Registro Estudiante" class="btn btn-success boton-Registro" onclick="guardarDatos()">
-    </form>
-  </section>
+  <section id="formRegistro"></section>
+  <h1>{{=message2}}</h1>
+  <section id="formDataPadres"></section>
+  <br>
+  <button type="submit" onclick=guardarDatos() class="'btn btn-success boton-Registro'">Registrar Estudiante</button>
+  <script src="{{=URL('static', 'js/guardaDatos.js')}}"></script>
   <script src="{{=URL('static', 'js/formulario.js')}}"></script>
   <script src="{{=URL('static', 'js/jquery.js')}}"></script>
-<script>
-    function guardarDatos() {
-        var datos = {
-          nombres: $('#nombre').val(),
-          apellidos: $('#apellido').val(),
-          tipodoc: $('#tipodocumento').val(),
-          numerodoc: $('#numdoc').val()
-        }
-        // Realizar la solicitud AJAX al API
-        $.ajax({
-            url: '{{=URL("default", "api_guardar_datos")}}',
-            contentType: 'application/json; charset=utf-8',
-            type: 'POST',
-            data: JSON.stringify(datos),
-            dataType: "json",
-            success: function(response) {
-                if(response.mensaje == 1){
-                  alert("Por favor validar que los campos no esten vacioes son obligatorios");
-                }
-                else{
-                  alert('Datos guardados con éxito');
-                  $('#nombre').val('');
-                  $('#apellido').val('');
-                  $('#tipodocumento').val('');
-                  $('#numdoc').val('');
-                  console.log(response)
-                }
-            },
-            error: function(xhr, status, error) {
-                alert('Error al guardar datos: ' + xhr.responseText);
-            }
-        });
-    }
-</script>
 </body>
 
 </html>
