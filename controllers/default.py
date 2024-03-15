@@ -25,8 +25,13 @@ def api_guardar_datos():
 
     # Aquí puedes procesar y guardar los datos según tus necesidades
     # Por ejemplo, guardarlos en una base de datos
-    if datos['nombres'] == '' or datos['apellidos'] == '' or datos['numerodoc'] == '':
-        return response.json({"mensaje": 1})
+    posicion = 0
+
+    for clave in datos:
+        posicion +=1
+        valor = datos[clave]
+        if valor == '':
+            return response.json({"mensaje": 1,"posicion":posicion})
     else:
         db.estudiante.insert(**datos)
         return response.json({"mensaje": "Datos guardados exitosamente"})

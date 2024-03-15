@@ -74,3 +74,38 @@ success!
 timestamp: 2024-03-12T22:38:52.127002
 ALTER TABLE "estudiante" ADD "grado" VARCHAR(512);
 success!
+timestamp: 2024-03-14T21:11:33.664689
+ALTER TABLE "estudiante" ADD "fecnacest" VARCHAR(512);
+success!
+timestamp: 2024-03-14T21:17:44.169132
+ALTER TABLE "estudiante" ADD "fecnacest__tmp" TIMESTAMP;
+UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
+timestamp: 2024-03-14T21:28:10.935944
+ALTER TABLE "estudiante" ADD "fecnacest__tmp" TIMESTAMP;
+UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
+timestamp: 2024-03-14T21:29:46.230213
+ALTER TABLE "estudiante" ADD "fecnacest__tmp" TIMESTAMP;
+UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
+timestamp: 2024-03-14T21:34:47.869580
+ALTER TABLE "estudiante" DROP COLUMN "fecnacest";
+success!
+timestamp: 2024-03-14T21:36:26.086052
+ALTER TABLE "estudiante" ADD "fecnacest" TIMESTAMP;
+success!
+timestamp: 2024-03-14T21:41:08.782218
+ALTER TABLE "estudiante" ADD "fecnacest__tmp" DATE;
+UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
+ALTER TABLE "estudiante" DROP COLUMN "fecnacest";
+ALTER TABLE "estudiante" ADD "fecnacest" DATE;
+UPDATE "estudiante" SET "fecnacest"="fecnacest__tmp";
+ALTER TABLE "estudiante" DROP COLUMN "fecnacest__tmp";
+success!
+timestamp: 2024-03-14T21:42:49.737218
+ALTER TABLE "estudiante" ADD "fecnacest__tmp" TIMESTAMP;
+UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
+ALTER TABLE "estudiante" DROP COLUMN "fecnacest";
+ALTER TABLE "estudiante" ADD "fecnacest" TIMESTAMP;
+UPDATE "estudiante" SET "fecnacest"="fecnacest__tmp";
+ALTER TABLE "estudiante" DROP COLUMN "fecnacest__tmp";
+success!
+success!

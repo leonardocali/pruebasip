@@ -163,4 +163,5 @@ db.define_table('estudiante',
     Field('tipodoc', requires=IS_NOT_EMPTY()),
     Field('numerodoc', requires=IS_NOT_EMPTY()),
     Field('grado', requires=IS_NOT_EMPTY()),
+    Field('fecnacest', 'datetime', default=IS_DATE(format=('%Y-%m-%d')))
 )

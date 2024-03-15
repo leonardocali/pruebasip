@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
         option.text = opcion; // Texto visible para la opción
         inputGrado.add(option);
       });
+    
+    const inputFecNac = document.createElement('input');
+    inputFecNac.type = 'date';
+    inputFecNac.className = 'form-control';
+    inputFecNac.name = 'fecnacest';
+    inputFecNac.id = 'fecnacest';
 
     //Agregar campos al formulario
     form.appendChild(inputNombre);
@@ -58,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.appendChild(inputTipodoc);
     form.appendChild(inputNumdoc);
     form.appendChild(inputGrado);
+    form.appendChild(inputFecNac);
     
     //Agregamos el formulario al contenedor
     if(formContenedor) {
