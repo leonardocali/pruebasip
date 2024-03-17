@@ -6,6 +6,7 @@
 # -------------------------------------------------------------------------
 from gluon.contrib.appconfig import AppConfig
 from gluon.tools import Auth
+from gluon.validators import IS_MATCH, IS_NOT_EMPTY
 
 
 # -------------------------------------------------------------------------
