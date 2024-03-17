@@ -6,7 +6,7 @@
 # -------------------------------------------------------------------------
 from gluon.contrib.appconfig import AppConfig
 from gluon.tools import Auth
-from gluon.validators import IS_MATCH, IS_NOT_EMPTY
+from datetime import datetime
 
 
 # -------------------------------------------------------------------------
@@ -164,5 +164,6 @@ db.define_table('estudiante',
     Field('tipodoc', requires=IS_NOT_EMPTY()),
     Field('numerodoc', requires=IS_NOT_EMPTY()),
     Field('grado', requires=IS_NOT_EMPTY()),
-    Field('fecnacest', 'datetime', default=IS_DATE(format=('%Y-%m-%d')))
+    Field('fecnacest', 'datetime', default=IS_DATE(format=('%Y-%m-%d'))),
+    Field('fecregest', 'datetime', default=datetime.now()),
 )

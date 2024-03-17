@@ -109,3 +109,6 @@ UPDATE "estudiante" SET "fecnacest"="fecnacest__tmp";
 ALTER TABLE "estudiante" DROP COLUMN "fecnacest__tmp";
 success!
 success!
+timestamp: 2024-03-16T20:54:48.815340
+ALTER TABLE "estudiante" ADD "fecregest" TIMESTAMP;
+success!

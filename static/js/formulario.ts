@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
   inputNombre.className = "form-control";
   inputNombre.name = "nombre";
   inputNombre.id = "nombre";
-  inputNombre.pattern = "[A-Za-z]+";
+  inputNombre.pattern = "[A-Za-z ]+";
   inputNombre.addEventListener("change", function () {
     const nombreInput: HTMLInputElement | null = document.getElementById("nombre") as HTMLInputElement;
     var valor = nombreInput.value.trim();
-    var soloLetras = /^[A-Za-z]+$/.test(valor);
+    var soloLetras = /^[A-Za-z ]+$/.test(valor);
     if (!soloLetras) {
       alert("El campo nombre solo recibe letras");
       nombreInput.value = "";
@@ -29,11 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
   inputApellidos.className = "form-control";
   inputApellidos.name = "apellido";
   inputApellidos.id = "apellido";
-  inputApellidos.pattern = "^[A-Za-z]+$";
+  inputApellidos.pattern = "^[A-Za-z ]+$";
   inputApellidos.addEventListener("change", function () {
     const nombreInput: HTMLInputElement | null = document.getElementById("apellido") as HTMLInputElement;
     var valor = nombreInput.value.trim();
-    var soloLetras = /^[A-Za-z]+$/.test(valor);
+    var soloLetras = /^[A-Za-z ]+$/.test(valor);
     if (!soloLetras) {
       alert("El campo apellido solo recibe letras");
       nombreInput.value = "";
