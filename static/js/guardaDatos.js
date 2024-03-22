@@ -1,20 +1,21 @@
-function guardarDatos() {
+function guardarDatosFormulario() {
     var datos = {
-      nombres: $('#nombre').val(),
-      apellidos: $('#apellido').val(),
-      tipodoc: $('#tipodocumento').val(),
-      numerodoc: $('#numdoc').val(),
-      grado: $('#grado').val(),
-      fecnacest: $('#fecnacest').val(),
+      nombres: $('#nombreE').val(),
+      apellidos: $('#apellidoE').val(),
+      tipodoc: $('#tipodocE').val(),
+      numerodoc: $('#documentoE').val(),
+      grado: $('#listagrados').val(),
+      fecnacest: $('#fechanace').val(),
+      nombrepadre: $('#nombrep').val()
     }
 
     var valCampos = {
-      nombres: [$('#nombre').val(), '#nombre'],
-      apellidos: [$('#apellido').val(), '#apellido' ],
-      tipodoc: [$('#tipodocumento').val(), '#tipodocumento'],
-      numerodoc: [$('#numdoc').val(), '#numdoc'],
-      grado: [$('#grado').val(),'#grado'],
-      fecnacest: [$('#fecnacest').val(),'#fecnacest'],
+      nombres: [$('#nombreE').val(), '#nombreE'],
+      apellidos: [$('#apellidoE').val(), '#apellidoE' ],
+      tipodoc: [$('#tipodocE').val(), '#tipodocE'],
+      numerodoc: [$('#documentoE').val(), '#documentoE'],
+      grado: [$('#listagrados').val(),'#listagrados'],
+      fecnacest: [$('#fechanace').val(),'#fechanace'],
     }
 
     for (const evaluar in valCampos){
@@ -24,10 +25,10 @@ function guardarDatos() {
     }
 
     var responEstudiantes = {
-      campo_1: ['Nombres', '#nombre'],
-      campo_2: ['Apellidos del estudiante', '#apellido'],
-      campo_4: ['Numero de documento del estudiante','#numdoc'],
-      campo_6: ['Fecha de nacimiento del estudiante','#fecnacest']
+      campo_1: ['Nombres', '#nombreE'],
+      campo_2: ['Apellidos del estudiante', '#apellidoE'],
+      campo_4: ['Numero de documento del estudiante','#documentoE'],
+      campo_6: ['Fecha de nacimiento del estudiante','#fechanace']
     }
 
     console.log(datos);
@@ -50,10 +51,7 @@ function guardarDatos() {
             }
             else{
               alert('Datos guardados con éxito');
-              $('#nombre').val('');
-              $('#apellido').val('');
-              $('#numdoc').val('');
-              $('#fecnacest').val('');
+              location.reload();
             }
         },
         error: function(xhr, status, error) {

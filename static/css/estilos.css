@@ -1,26 +1,39 @@
-body {
-  margin-top: 30px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background: rgb(0,212,255);
-  background: radial-gradient(circle, rgba(0,212,255,1) 0%, rgba(79,79,219,1) 75%, rgba(0,212,255,1) 100%);
+html {
+  margin-top: 20px;
 }
 
-h1 {
+h2 {
   text-align: center;
-  font-size: 25px ;
+  font-weight: bolder;
 }
 
-.regEstForm{
-display: flex;
-justify-content: center;
-align-items: center;
+h4 {
+  text-align: center;
+  margin-top: 5px;
+  background-color: darkcyan;
+  color: whitesmoke;
+}
+.contenedor{
+  margin-left:10%;
+  margin-right: 10%;
 }
 
-.boton-Registro{
-  width: 250px;
+.form-control{
+  margin-top: 5px;   
 }
 
-.boton-Registro:hover{
-  width: 250px;
-  background-color: firebrick;
+.boton-registro {
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 40%;
+  margin-top: 20px;  
+  background-color: darkcyan;
+}
+
+.validaciones-campo-incorrecto {
+  border: 3px solid crimson;
+}
+
+.validaciones-campo-correcto {
+  border: 1px solid #ced4da;
 }
