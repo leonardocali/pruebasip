@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{{include 'cabecera.html'}}
+<body>
+    <div class="contenedor">
+        {{include 'barranav.html'}}
+        <br>
+        <div id="busca-estudiante" class="busca-contenedor">
+            <form method="POST" id="miFormulario">
+                <input class="form-control form-control-sm input-buscar-estudiante" type="text" pattern="^[0-9]+$"
+                    placeholder="Digita número de documento" id="buscaEstudiante">
+                <br>
+                <div class="boton-buscar-estudiante">
+                    <button type="submit" class="btn btn-primary boton-buscar-estudiante" id="botonBuscarEst"
+                        >Buscar estudiante</button>
+                </div>
+            </form>
+        </div>
+        <div id="actualizar-estudiante" class="contenedor-actualiza form-control form-control-sm">
+            <h2>ACTUALIZAR DATOS ESTUDIANTES</h2>
+            <hr />
+            <h4>DATOS DEL ESTUDIANTE</h4>
+            <input type="hidden" id="idestudiante">
+        </div>
+        <div><button class="btn btn-primary boton-registro" type="submit" onclick=actualizarDatosEstudiante()>Actualizar
+            datos</button></div>
+    </div>
+    <script src=" {{=URL('static', 'js/actualizarEstudiante.js')}}">
+    </script>
+    <script src=" {{=URL('static', 'js/formulario_crea.js')}}">
+    </script>
+    <script src="{{=URL('static', 'js/jquery.js')}}"></script>
+    <script src="{{=URL('static', 'js/bootstrap.bundle.min.js')}}"></script>
+</body>

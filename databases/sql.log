@@ -1,4 +1,4 @@
-timestamp: 2024-03-05T19:06:31.671568
+timestamp: 2024-03-24T02:43:48.063679
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -10,21 +10,21 @@ CREATE TABLE "auth_user"(
     "registration_id" CHAR(512)
 );
 success!
-timestamp: 2024-03-05T19:06:31.899851
+timestamp: 2024-03-24T02:43:48.323572
 CREATE TABLE "auth_group"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "role" CHAR(512),
     "description" TEXT
 );
 success!
-timestamp: 2024-03-05T19:06:31.976035
+timestamp: 2024-03-24T02:43:48.406429
 CREATE TABLE "auth_membership"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
 );
 success!
-timestamp: 2024-03-05T19:06:32.058972
+timestamp: 2024-03-24T02:43:48.485448
 CREATE TABLE "auth_permission"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
@@ -33,7 +33,7 @@ CREATE TABLE "auth_permission"(
     "record_id" INTEGER
 );
 success!
-timestamp: 2024-03-05T19:06:32.132657
+timestamp: 2024-03-24T02:43:48.578890
 CREATE TABLE "auth_event"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "time_stamp" TIMESTAMP,
@@ -43,7 +43,7 @@ CREATE TABLE "auth_event"(
     "description" TEXT
 );
 success!
-timestamp: 2024-03-05T19:06:32.206677
+timestamp: 2024-03-24T02:43:48.650815
 CREATE TABLE "auth_cas"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
@@ -53,62 +53,30 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
-timestamp: 2024-03-09T12:53:03.831024
-CREATE TABLE "estudiante"(
+timestamp: 2024-03-24T02:43:48.824948
+CREATE TABLE "estudiantes"(
     "id" SERIAL PRIMARY KEY,
     "nombres" VARCHAR(512),
     "apellidos" VARCHAR(512),
     "tipodoc" VARCHAR(512),
-    "numerodoc" VARCHAR(512)
+    "numerodoc" VARCHAR(512),
+    "grado" VARCHAR(512),
+    "fecnacest" VARCHAR(512),
+    "lugarnacest" VARCHAR(512),
+    "edadest" VARCHAR(512),
+    "tiposanest" VARCHAR(512),
+    "direstudiante" VARCHAR(512),
+    "telest" VARCHAR(512),
+    "nombrepadre" VARCHAR(512),
+    "apepadre" VARCHAR(512),
+    "fecnacp" VARCHAR(512),
+    "edadp" VARCHAR(512),
+    "ocupacionp" VARCHAR(512),
+    "nombrem" VARCHAR(512),
+    "apem" VARCHAR(512),
+    "fecnacm" VARCHAR(512),
+    "edadm" VARCHAR(512),
+    "ocupacionm" VARCHAR(512),
+    "fecregest" TIMESTAMP
 );
-success!
-timestamp: 2024-03-10T10:23:22.394797
-CREATE TABLE "estudiante"(
-    "id" SERIAL PRIMARY KEY,
-    "nombres" VARCHAR(512),
-    "apellidos" VARCHAR(512),
-    "tipodoc" VARCHAR(512),
-    "numerodoc" VARCHAR(512)
-);
-success!
-timestamp: 2024-03-12T22:38:52.127002
-ALTER TABLE "estudiante" ADD "grado" VARCHAR(512);
-success!
-timestamp: 2024-03-14T21:11:33.664689
-ALTER TABLE "estudiante" ADD "fecnacest" VARCHAR(512);
-success!
-timestamp: 2024-03-14T21:17:44.169132
-ALTER TABLE "estudiante" ADD "fecnacest__tmp" TIMESTAMP;
-UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
-timestamp: 2024-03-14T21:28:10.935944
-ALTER TABLE "estudiante" ADD "fecnacest__tmp" TIMESTAMP;
-UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
-timestamp: 2024-03-14T21:29:46.230213
-ALTER TABLE "estudiante" ADD "fecnacest__tmp" TIMESTAMP;
-UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
-timestamp: 2024-03-14T21:34:47.869580
-ALTER TABLE "estudiante" DROP COLUMN "fecnacest";
-success!
-timestamp: 2024-03-14T21:36:26.086052
-ALTER TABLE "estudiante" ADD "fecnacest" TIMESTAMP;
-success!
-timestamp: 2024-03-14T21:41:08.782218
-ALTER TABLE "estudiante" ADD "fecnacest__tmp" DATE;
-UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
-ALTER TABLE "estudiante" DROP COLUMN "fecnacest";
-ALTER TABLE "estudiante" ADD "fecnacest" DATE;
-UPDATE "estudiante" SET "fecnacest"="fecnacest__tmp";
-ALTER TABLE "estudiante" DROP COLUMN "fecnacest__tmp";
-success!
-timestamp: 2024-03-14T21:42:49.737218
-ALTER TABLE "estudiante" ADD "fecnacest__tmp" TIMESTAMP;
-UPDATE "estudiante" SET "fecnacest__tmp"="fecnacest";
-ALTER TABLE "estudiante" DROP COLUMN "fecnacest";
-ALTER TABLE "estudiante" ADD "fecnacest" TIMESTAMP;
-UPDATE "estudiante" SET "fecnacest"="fecnacest__tmp";
-ALTER TABLE "estudiante" DROP COLUMN "fecnacest__tmp";
-success!
-success!
-timestamp: 2024-03-16T20:54:48.815340
-ALTER TABLE "estudiante" ADD "fecregest" TIMESTAMP;
 success!

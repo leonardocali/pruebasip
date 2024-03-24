@@ -1,4 +1,5 @@
 const app = document.getElementById("formulario-registro");
+const app_act = document.getElementById("actualizar-estudiante");
 const formulario = document.createElement("form") as HTMLFormElement;
 
 const crearInputText = (textLabel: string, idInput: string, placeH: string) => {
@@ -52,7 +53,7 @@ const crearInputFecha = (textLabel: string, idInput: string) => {
 };
 
 const crearInputSelect = (opcLista:string[], idInput:string, labelInput:string) => {
-  const gradosCurso = opcLista;
+  const opcionesLista = opcLista;
   const div1 = document.createElement("div");
   const label = document.createElement("label");
   label.className = "col-sm-2 col-form-label font-weight-bold";
@@ -62,12 +63,21 @@ const crearInputSelect = (opcLista:string[], idInput:string, labelInput:string) 
   const div2 = document.createElement("div");
   div2.className = "col-sm-10";
   const campotexto = document.createElement("select");
-  gradosCurso.forEach((elemen, index) => {
-    const opcion = document.createElement("option");
-    opcion.value = (index + 1).toString();
-    opcion.text = elemen;
-    campotexto.options.add(opcion);
-  });
+  if (idInput === 'listiposan' || idInput === 'tipodocE'){
+    opcionesLista.forEach((elemen, index) => {
+      const opcion = document.createElement("option");
+      opcion.value = elemen;
+      opcion.text = elemen;
+      campotexto.options.add(opcion);
+    });
+  }else{
+    opcionesLista.forEach((elemen, index) => {
+      const opcion = document.createElement("option");
+      opcion.value = (index + 1).toString();
+      opcion.text = elemen;
+      campotexto.options.add(opcion);
+    });
+  }
   campotexto.id = idInput;
   campotexto.className = "form-control font-weight-light";
   div2.appendChild(campotexto);
@@ -100,7 +110,7 @@ const lugarNacE = crearInputText("Lugar de nacimiento:","lugarNacE","Escriba la 
 
 //Input curso a registrar
 let tipoSan = ["A+","O+","B+","AB+","A-","O-","B-","AB-"];
-const lisTipoSanE = crearInputSelect(tipoSan,"listagrados","Tipo de Sangre:");
+const lisTipoSanE = crearInputSelect(tipoSan,"listiposan","Tipo de Sangre:");
 
 //Input Direccion Residencia Estudiante
 const dirResE = crearInputText("Dirección residencia:","direresE","Escriba la dirección donde vive actualmente");
@@ -128,17 +138,6 @@ const fecNaM = crearInputFecha("Fecha de nacimiento mamá:","fechanacm");
 const edadM = crearInputText("Edad:","edadM","Escriba la edad de la mamá");
 const ocupacionM = crearInputText("Ocupación:","ocupacionm","Escriba la ocupación actual");
 
-/* const miBoton = document.createElement("button");
-const divBoton = document.createElement("div");
-divBoton.className = "boton-regsitro"
-miBoton.type = "submit";
-miBoton.style.backgroundColor = "darkcyan";
-miBoton.style.border = "solid";
-miBoton.style.borderColor = "white";
-miBoton.textContent = "Registrar Estudiante";
-miBoton.className = "btn btn-primary boton-registro";
-miBoton.addEventListener('click', guardarDatosFormulario )
-divBoton.appendChild(miBoton); */
 
 const listaCampos = [
   nombreE,
@@ -162,8 +161,7 @@ const listaCampos = [
   inputApeM,
   fecNaM,
   edadM,
-  ocupacionM,
-  /*divBoton*/
+  ocupacionM
 ];
 
 listaCampos.forEach((valor) => {
@@ -171,6 +169,7 @@ listaCampos.forEach((valor) => {
 })
 
 app?.appendChild(formulario);
+app_act?.appendChild(formulario);
 
   //Manejar el evento de envio del formulario
 

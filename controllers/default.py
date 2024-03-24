@@ -1,22 +1,14 @@
-# -*- coding: utf-8 -*-
-# -------------------------------------------------------------------------
-# This is a sample controller
-# this file is released under public domain and you can use without limitations
-# -------------------------------------------------------------------------
 import json
 
 # ---- example index page ----
 def index():
-    return dict(message1="REGISTRO ESTUDIANTES", message2="DATOS PADRES DE FAMILIA")
+    return dict(message1="Registro Estudiantes")
 
-# controllers/default.py
-
-
+#Api para realizar validacion y guardar datos en BD
 def api_guardar_datos():
    # Asegúrate de que la solicitud sea de tipo POST
     if request.env.request_method != 'POST':
         raise HTTP(400, "Bad Request: Se espera una solicitud POST")
-
     # Lee los datos del cuerpo de la solicitud POST (en formato JSON)
     try:
         datos = json.loads(request.body.read())
@@ -33,59 +25,51 @@ def api_guardar_datos():
         if valor == '':
             return response.json({"mensaje": 1,"posicion":posicion})
     else:
-        db.estudiante.insert(**datos)
+        db.estudiantes.insert(**datos)
         return response.json({"mensaje": "Datos guardados exitosamente"})
    
+def actualizar_datos():
+    return dict(message1="Actualizacion Estudiante")
 
+def api_consultar_datos_estudiante():
+    if request.method == 'POST':  # Verifica que la solicitud sea de tipo POST
+        # Obtén los datos enviados en la solicitud POST
+        try:
+            datos = json.loads(request.body.read())
+        except ValueError:
+            raise HTTP(400, "Bad Request: Datos JSON inválidos")
+        # Consulta del estudiante en la BD
+        registro = db(db.estudiantes.numerodoc == datos).select()
+        if len(registro) == 0:
+            return response.json({"mensaje": 0})
+        else:
+            return response.json({"mensaje": registro})
+    else:
+        # Maneja la posibilidad de que la solicitud no sea POST
+        raise HTTP(400, "Solicitud incorrecta de consulta")
 
+def api_actualizar_datos_estudiante():
+    if request.method == 'POST':  # Verifica que la solicitud sea de tipo POST
+        # Obtén los datos enviados en la solicitud POST
+        try:
+            datos = json.loads(request.body.read())
+        except ValueError:
+            raise HTTP(400, "Bad Request: Datos JSON inválidos")
+        #Valida los campos si estan vacios
+        posicion = 0
 
-
-
-# ---- API (example) -----
-""" @auth.requires_login()
-def api_get_user_email():
-    if not request.env.request_method == 'GET': raise HTTP(403)
-    return response.json({'status':'success', 'email':auth.user.email})
-
-# ---- Smart Grid (example) -----
-@auth.requires_membership('admin') # can only be accessed by members of admin groupd
-def grid():
-    response.view = 'generic.html' # use a generic view
-    tablename = request.args(0)
-    if not tablename in db.tables: raise HTTP(403)
-    grid = SQLFORM.smartgrid(db[tablename], args=[tablename], deletable=False, editable=False)
-    return dict(grid=grid)
-
-# ---- Embedded wiki (example) ----
-def wiki():
-    auth.wikimenu() # add the wiki to the menu
-    return auth.wiki() 
-
-# ---- Action for login/register/etc (required for auth) -----
-def user():
-    
-    exposes:
-    http://..../[app]/default/user/login
-    http://..../[app]/default/user/logout
-    http://..../[app]/default/user/register
-    http://..../[app]/default/user/profile
-    http://..../[app]/default/user/retrieve_password
-    http://..../[app]/default/user/change_password
-    http://..../[app]/default/user/bulk_register
-    use @auth.requires_login()
-        @auth.requires_membership('group name')
-        @auth.requires_permission('read','table name',record_id)
-    to decorate functions that need access control
-    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
-    
-    return dict(form=auth())
-
-# ---- action to server uploaded static content (required) ---
-@cache.action()
-def download():
-    
-    allows downloading of uploaded files
-    http://..../[app]/default/download/[filename]
-    
-    return response.download(request, db) """
-
+        for clave in datos[0]:
+            posicion +=1
+            valor = datos[0][clave]
+            if valor == '':
+                return response.json({"mensaje": 1,"posicion":posicion})
+        # Actuliza datos del estudiante en la BD por su ID
+        actualizacion = db.estudiantes(int(datos[1])).update_record(**datos[0])
+        if actualizacion :
+           return response.json({"mensaje":2}) 
+        else:
+            return response.json({"mensaje":3}) 
+        #return response.json({"mensaje": registro})
+    else:
+        # Maneja la posibilidad de que la solicitud no sea POST
+        raise HTTP(400, "Solicitud incorrecta de consulta")

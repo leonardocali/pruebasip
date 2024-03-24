@@ -1,13 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro Estudiante</title>
-  <link rel="stylesheet" href="{{=URL('static', 'css/bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{=URL('static', 'css/estilos.css')}}">
-</head>
+<html lang="es">
+<title>{{=message1}}</title>
+{{include 'cabecera.html'}}
 
 <body>
   <div id="formulario-registro" class="contenedor">
@@ -17,9 +11,10 @@
     <hr />
     <h4>DATOS DEL ESTUDIANTE</h4>
   </div>
-  <div><button class="btn btn-primary boton-registro" type="submit" onclick=guardarDatosFormulario()>Guardar datos</button></div>
+  <div><button class="btn btn-primary boton-registro" type="submit" onclick=guardarDatosFormulario()>Guardar
+      datos</button></div>
   <script src="{{=URL('static', 'js/guardaDatos.js')}}"></script>
-  <script src="{{=URL('static', 'js/formulario.js')}}"></script>
+  <script src="{{=URL('static', 'js/formulario_crea.js')}}"></script>
   <script src="{{=URL('static', 'js/jquery.js')}}"></script>
   <script src="{{=URL('static', 'js/bootstrap.bundle.min.js')}}"></script>
 </body>
