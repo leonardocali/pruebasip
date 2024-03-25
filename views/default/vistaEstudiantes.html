@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<title>{{=message1}}</title>
+{{include 'cabecera.html'}}
+
+<body>
+  <div id="formulario-registro" class="contenedor">
+    {{include 'barranav.html'}}
+    <br>
+    <h2>REGISTRO DE ESTUDIANTES</h2>
+    <hr />
+    <h4>DATOS DEL ESTUDIANTE</h4>
+  </div>
+  <div><button class="btn btn-primary boton-registro" type="submit" onclick=guardarDatosFormulario()>Guardar
+      datos</button></div>
+  <script src="{{=URL('static', 'js/guardaDatos.js')}}"></script>
+  <script src="{{=URL('static', 'js/formulario_crea.js')}}"></script>
+  <script src="{{=URL('static', 'js/jquery.js')}}"></script>
+  <script src="{{=URL('static', 'js/bootstrap.bundle.min.js')}}"></script>
+</body>
+
+</html>

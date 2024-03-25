@@ -1,7 +1,29 @@
 import json
 
 # ---- example index page ----
-def index():
+def index():    
+    return dict(message1="Inicio de sesión")
+
+def api_consultar_user_system():
+    if request.method == 'POST':  # Verifica que la solicitud sea de tipo POST
+        # Obtén los datos enviados en la solicitud POST
+        try:
+            datos = json.loads(request.body.read())
+        except ValueError:
+            raise HTTP(400, "Bad Request: Datos JSON inválidos")
+        # Consulta del usuario del sistema en la BD
+        usuario = datos['usuario']
+        contra = datos['passUser']
+        registro = db((db.user_system.usuario == usuario) & (db.user_system.password == contra)).select()
+        if len(registro) == 0:
+            return response.json({"mensaje": 0})
+        else:
+           return 1
+    else:
+        # Maneja la posibilidad de que la solicitud no sea POST
+        raise HTTP(400, "Solicitud incorrecta de consulta")
+
+def vistaEstudiantes():
     return dict(message1="Registro Estudiantes")
 
 #Api para realizar validacion y guardar datos en BD

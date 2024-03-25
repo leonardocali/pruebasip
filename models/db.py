@@ -183,3 +183,10 @@ db.define_table('estudiantes',
     Field('ocupacionm', requires=IS_NOT_EMPTY()),
     Field('fecregest', 'datetime', default=datetime.now()),
 )
+
+db.define_table('user_system',
+    Field('usuario', requires=IS_NOT_EMPTY(), unique=True),
+    Field('password', requires=IS_NOT_EMPTY()),
+    Field('type_user', requires=IS_NOT_EMPTY()),
+    Field('fecregest', 'datetime', default=datetime.now()),
+)

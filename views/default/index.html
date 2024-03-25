@@ -2,21 +2,42 @@
 <html lang="es">
 <title>{{=message1}}</title>
 {{include 'cabecera.html'}}
-
 <body>
-  <div id="formulario-registro" class="contenedor">
-    {{include 'barranav.html'}}
-    <br>
-    <h2>REGISTRO DE ESTUDIANTES</h2>
-    <hr />
-    <h4>DATOS DEL ESTUDIANTE</h4>
-  </div>
-  <div><button class="btn btn-primary boton-registro" type="submit" onclick=guardarDatosFormulario()>Guardar
-      datos</button></div>
-  <script src="{{=URL('static', 'js/guardaDatos.js')}}"></script>
-  <script src="{{=URL('static', 'js/formulario_crea.js')}}"></script>
-  <script src="{{=URL('static', 'js/jquery.js')}}"></script>
-  <script src="{{=URL('static', 'js/bootstrap.bundle.min.js')}}"></script>
+    <div id="inicio-sesion" class="contenedor">
+        <div class="login">
+            <div>
+                <h1>Inicio de Sesión</h1>
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" class="form-control input-usuario" placeholder="Usuario" id="usuario"
+                                pattern="^[a-zA-Z0-9]+$" title="Solo letras y números">
+                        </div>
+                        <div class="col-6">
+                            <input type="password" 
+                            id="passUser" 
+                            class="form-control input-pass" 
+                            placeholder="Password"
+                            >
+                        </div>
+                        <br>
+                    </div>
+                    <br>
+                    <div><button class="btn btn-primary boton-sesion" id="boton-sesion" type="submit"
+                            onclick=validacionSesion()>Incio
+                            sesión</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+    {{include 'usuarioNoExiste.html'}}
+
+    <script src="{{=URL('static', 'js/inicioSesion.js')}}"></script>
+    <script src="{{=URL('static', 'js/jquery.js')}}"></script>
+    <script src="{{=URL('static', 'js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{=URL('static', 'js/modernizr-2.8.3.min.js')}}"></script>
+    
 </body>
 
 </html>
