@@ -32,11 +32,15 @@ function validacionSesion(){
             dataType: "json",
             success: function(response) {
                 if(response.mensaje == 0){
-                    alert('Usuario no existe en BD, por favor validar')
+                    $('#modal-usuario').modal("show")
+                    //alert('Usuario no existe en BD, por favor validar')
+                }
+                else{
+                    window.location.href='sge_prueba/default/vistaEstudiantes'
                 } 
             },
             error: function(xhr, status, error) {
-                alert('Error al consultar el usuario: ' + xhr.responseText);
+                alert('Error al consultar el usuario: ' + xhr.responseText + "error: " + error);
             }
         });
     }     
