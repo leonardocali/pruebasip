@@ -183,7 +183,7 @@ function validaInputsText(event: Event) {
   const id = target.id;
   const verificaInput: HTMLInputElement | null = document.getElementById(id) as HTMLInputElement;
   let valor = verificaInput.value.trim();
-  let soloLetras = /^[A-Za-z\sñ]+$/.test(valor);
+  let soloLetras = /^[A-Za-z [Ññ]]+$/.test(valor);
   if (!soloLetras) {
     alert("El campo solo acepta letras");
     verificaInput.value = "";
