@@ -15,7 +15,6 @@ function validacionSesion(){
         passUser
     }
 
-    //console.log(datos)
     if(datos.usuario === '' && datos.passUser === ''){
         alert("Campos usuario y contraseña vacios");
     }

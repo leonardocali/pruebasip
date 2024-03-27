@@ -1,3 +1,53 @@
+document.addEventListener('DOMContentLoaded', () =>{
+  $('#edadE, #edadM, #edadP').prop('disabled', true)
+  const boton = document.getElementById('boton-guarda-formulario')
+  boton.addEventListener('click', guardarDatosFormulario)
+
+  document.getElementById("fechanace").addEventListener("change", function(event) {
+    var idDelElemento = event.target.id;
+    calculaYear(idDelElemento)
+    console.log("El ID del elemento es: " + idDelElemento);
+  });
+
+  document.getElementById("fechanacp").addEventListener("change", function(event) {
+    var idDelElemento = event.target.id;
+    calculaYear(idDelElemento)
+    console.log("El ID del elemento es: " + idDelElemento);
+  });
+
+  document.getElementById("fechanacm").addEventListener("change", function(event) {
+    var idDelElemento = event.target.id;
+    calculaYear(idDelElemento)
+    console.log("El ID del elemento es: " + idDelElemento);
+  });
+
+  function calculaYear(id) {
+    const datosfechas = {
+      fechanace:'edadE',
+      fechanacp:'edadP',
+      fechanacm:'edadM'
+    }
+
+    if (id==='fechanace' || id==='fechanacp' || id==='fechanacm'){
+      for(let val in datosfechas){
+        if(val == id) {
+          let valorFecha = $('#'+id).val()
+          var fechaInicial = new Date(valorFecha);
+          var fechaFinal = new Date(); // Fecha actual
+            // Calcular la diferencia en milisegundos
+          var diferenciaEnMilisegundos = fechaFinal.getTime() - fechaInicial.getTime();
+            // Convertir la diferencia en milisegundos a días
+          var milisegundosEnUnDia = 1000 * 60 * 60 * 24;
+          var diferenciaEnDias = diferenciaEnMilisegundos / milisegundosEnUnDia;
+            // Calcular años
+          var anos = Math.floor(diferenciaEnDias / 365.25);
+          $('#'+datosfechas[val]).val(anos)
+        }
+      }
+    }
+  }
+})
+
 function guardarDatosFormulario() {
     const datos = {
       nombres: $('#nombreE').val(),
@@ -74,8 +124,9 @@ function guardarDatosFormulario() {
       campo_20: ['edad de la madre','#edadM'],
       campo_21: ['ocupación de la madre','#ocupacionm'],
     }
-
+    
     console.log(datos);
+        
     // Realizar la solicitud AJAX al API
     $.ajax({
         url: 'http://127.0.0.1:8000/sge_prueba/default/api_guardar_datos',

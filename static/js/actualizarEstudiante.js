@@ -1,10 +1,15 @@
+document.addEventListener('DOMContentLoaded',()=>{
+    $("#edadE, #edadP, #edadM").prop("disabled", true)
+    const btnEfoca = document.querySelector('#buscaEstudiante')
+    btnEfoca.focus()
+})
+
 document.getElementById('botonBuscarEst').addEventListener('click', function(event) {
     // Prevenir el comportamiento predeterminado del envío del formulario
     event.preventDefault();
     // Caputrar datos del campo documento
     let documentoEst = document.getElementById('buscaEstudiante').value;
-    console.log('¡Hola, ' + documentoEst + '!');
-    
+        
     //Datos para llenar el formulario
     const valCampos = {
         nombres: [$('#nombreE').val(), '#nombreE'],

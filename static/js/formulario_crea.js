@@ -14,7 +14,7 @@ var crearInputText = function (textLabel, idInput, placeH) {
     nuevoCampoTexto.type = "text";
     nuevoCampoTexto.placeholder = placeH;
     nuevoCampoTexto.id = idInput;
-    if (idInput === 'documentoE' || idInput === 'edadE' || idInput === 'telecontactE' || idInput === 'edadM' || idInput === 'edadP') {
+    if (idInput === 'documentoE' || idInput === 'telecontactE') {
         nuevoCampoTexto.addEventListener('change', validaInputsNum);
     }
     else if (idInput === 'direresE') {
@@ -93,7 +93,7 @@ var numDocE = crearInputText("Número de documento:", "documentoE", "Digite el n
 //Input fecha nacimiento
 var fechaNacE = crearInputFecha("Fecha de nacimiento:", "fechanace");
 //Input edad estudiante
-var edadE = crearInputText("Edad:", "edadE", "Escriba la edad del estudiante");
+var edadE = crearInputText("Edad:", "edadE", "Se calcula al digitar la fecha de nacimiento");
 //Input Lugar de Nacimiento
 var lugarNacE = crearInputText("Lugar de nacimiento:", "lugarNacE", "Escriba la ciudad de nacimiento");
 //Input curso a registrar
@@ -114,12 +114,12 @@ var espacio = document.createElement("br");
 var inputNomP = crearInputText("Nombres:", "nombrep", "Nombres del papá");
 var inputApeP = crearInputText("Apellidos:", "apellidosp", "Apellidos del papá");
 var fecNaP = crearInputFecha("Fecha de nacimiento papá:", "fechanacp");
-var edadP = crearInputText("Edad:", "edadP", "Escriba la edad del papá");
+var edadP = crearInputText("Edad:", "edadP", "Se calcula al digitar la fecha de nacimiento");
 var ocupacionP = crearInputText("Ocupación:", "ocupacionp", "Escriba la ocupación actual");
 var inputNomM = crearInputText("Nombres:", "nombrem", "Nombres de la mamá");
 var inputApeM = crearInputText("Apellidos:", "apellidosm", "Apellidos de la mamá");
 var fecNaM = crearInputFecha("Fecha de nacimiento mamá:", "fechanacm");
-var edadM = crearInputText("Edad:", "edadM", "Escriba la edad de la mamá");
+var edadM = crearInputText("Edad:", "edadM", "Se calcula al digitar la fecha de nacimiento");
 var ocupacionM = crearInputText("Ocupación:", "ocupacionm", "Escriba la ocupación actual");
 var listaCampos = [
     nombreE,
@@ -160,7 +160,7 @@ function validaInputsText(event) {
     var id = target.id;
     var verificaInput = document.getElementById(id);
     var valor = verificaInput.value.trim();
-    var soloLetras = /^[A-Za-z ]+$/.test(valor);
+    var soloLetras = /^[A-Za-z\sñ]+$/.test(valor);
     if (!soloLetras) {
         alert("El campo solo acepta letras");
         verificaInput.value = "";
