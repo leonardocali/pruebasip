@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-<title>{{=message1}}</title>
+<title>{{=titulo}}</title>
 {{include 'cabecera.html'}}
 <body>
     <div id="inicio-sesion" class="contenedor">
         <div class="login">
             <div>
-                <h1>Inicio de Sesión</h1>
+                <h1>{{=titulo}}</h1>
                 <form>
                     <div class="row">
                         <div class="col-6">
@@ -34,6 +34,7 @@
     {{include 'usuarioNoExiste.html'}}
 
     <script src="{{=URL('static', 'js/inicioSesion.js')}}"></script>
+    <script src="{{=URL('static', 'js/cerrarSesion.js')}}"></script>
     <script src="{{=URL('static', 'js/jquery.js')}}"></script>
     <script src="{{=URL('static', 'js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{=URL('static', 'js/modernizr-2.8.3.min.js')}}"></script>

@@ -15,7 +15,7 @@ function validacionSesion(){
         passUser
     }
 
-    console.log(datos)
+    //console.log(datos)
     if(datos.usuario === '' && datos.passUser === ''){
         alert("Campos usuario y contraseña vacios");
     }
@@ -36,7 +36,7 @@ function validacionSesion(){
                     //alert('Usuario no existe en BD, por favor validar')
                 }
                 else{
-                    window.location.href='sge_prueba/default/vistaEstudiantes'
+                    window.location.href = "http://127.0.0.1:8000/sge_prueba/default/vistaEstudiantes";
                 } 
             },
             error: function(xhr, status, error) {

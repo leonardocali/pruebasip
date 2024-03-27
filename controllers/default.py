@@ -1,11 +1,8 @@
 import json
 
 # ---- example index page ----
-def index():    
-    return dict(message1="Inicio de sesión")
-
-def vistaEstudiantes():
-    return dict(message1="Registro Estudiantes")
+def index():
+    return dict(titulo='Inicio de sesion')
 
 def api_consultar_user_system():
     if request.method == 'POST':  # Verifica que la solicitud sea de tipo POST
@@ -21,11 +18,13 @@ def api_consultar_user_system():
         if len(registro) == 0:
             return response.json({"mensaje": 0})
         else:
-            return response.json({"mensaje":1})
+           return response.json({"mensaje": 1})
     else:
         # Maneja la posibilidad de que la solicitud no sea POST
         raise HTTP(400, "Solicitud incorrecta de consulta")
     
+def vistaEstudiantes():
+    return dict(mensajeTitle='Registro Estudiantes')
 
 #Api para realizar validacion y guardar datos en BD
 def api_guardar_datos():
