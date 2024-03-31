@@ -82,3 +82,13 @@ h4 {
   margin-left:auto;
   margin-right:auto;
 }
+
+#cerrar-sesion{
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.table tbody tr, .table thead tr {
+  text-align: center;
+  font-size: 13px;
+}

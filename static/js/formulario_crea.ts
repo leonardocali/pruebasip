@@ -15,7 +15,7 @@ const crearInputText = (textLabel: string, idInput: string, placeH: string) => {
   nuevoCampoTexto.type = "text";
   nuevoCampoTexto.placeholder = placeH;
   nuevoCampoTexto.id = idInput;
-  if (idInput ==='documentoE' || idInput ==='telecontactE'){
+  if (idInput ==='documentoE' || idInput ==='telecontactE' || idInput ==='numerodocP' || idInput ==='numerodocM'){
     nuevoCampoTexto.addEventListener('change', validaInputsNum)
   }
   else if (idInput === 'direresE'){
@@ -129,6 +129,7 @@ const espacio = document.createElement("br");
 //Datos de padres o acudientes
 const inputNomP = crearInputText("Nombres:", "nombrep", "Nombres del papá");
 const inputApeP = crearInputText("Apellidos:","apellidosp","Apellidos del papá");
+const inputDocP= crearInputText("Número de documento:","numerodocP", "Documento del padre");
 const fecNaP = crearInputFecha("Fecha de nacimiento papá:","fechanacp");
 const edadP = crearInputText("Edad:","edadP","Se calcula al digitar la fecha de nacimiento");
 const ocupacionP = crearInputText("Ocupación:","ocupacionp","Escriba la ocupación actual");
@@ -136,6 +137,7 @@ const inputNomM = crearInputText("Nombres:", "nombrem", "Nombres de la mamá");
 const inputApeM = crearInputText("Apellidos:","apellidosm","Apellidos de la mamá");
 const fecNaM = crearInputFecha("Fecha de nacimiento mamá:","fechanacm");
 const edadM = crearInputText("Edad:","edadM","Se calcula al digitar la fecha de nacimiento");
+const inputDocM= crearInputText("Número de documento:","numerodocM", "Documento de la madre");
 const ocupacionM = crearInputText("Ocupación:","ocupacionm","Escriba la ocupación actual");
 
 
@@ -154,11 +156,13 @@ const listaCampos = [
   titDatosPadres,
   inputNomP,
   inputApeP,
+  inputDocP,
   fecNaP,
   edadP,
   ocupacionP,
   inputNomM,
   inputApeM,
+  inputDocM,
   fecNaM,
   edadM,
   ocupacionM
@@ -183,7 +187,7 @@ function validaInputsText(event: Event) {
   const id = target.id;
   const verificaInput: HTMLInputElement | null = document.getElementById(id) as HTMLInputElement;
   let valor = verificaInput.value.trim();
-  let soloLetras = /^[A-Za-z [Ññ]]+$/.test(valor);
+  let soloLetras = /^[A-Za-zñÑ\s]+$/.test(valor);
   if (!soloLetras) {
     alert("El campo solo acepta letras");
     verificaInput.value = "";

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{{ include 'cabecera.html '}}
+
+<div class="contenedor">
+  <div hidden>{{=grid}}</div>
+  {{ include 'barranav.html '}}
+  <br>
+  <h2>LISTADO DE ESTUDIANTES</h2>
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Tipo de documento</th>
+        <th scope="col">Número de documento</th>
+        <th scope="col">Grado</th>
+        <th scope="col">Fecha de nacimiento</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Tipo de Sangre</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Teléfono Contacto</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {{ contador = 1 }}
+      {{for valor in grid:}}
+      <tr>
+        <td scope="row">{{=contador}}</td>
+        <td>{{=valor['nombres']+" "+valor['apellidos']}}</td>
+        <td>{{=valor['tipodoc']}}</td>
+        <td>{{=valor['numerodocest']}}</td>
+        <td>{{=valor['grado']}}</td>
+        <td>{{=valor['fecnacest']}}</td>
+        <td>{{=valor['edadest']}}</td>
+        <td>{{=valor['tiposanest']}}</td>
+        <td>{{=valor['direstudiante']}}</td>
+        <td>{{=valor['telest']}}</td>
+      </tr>
+      {{contador+=1}}
+      {{pass}}
+    </tbody>
+  </table>
+</div>
+<script src="{{=URL('static', 'js/cerrarSesion.js')}}"></script>
+<script src="{{=URL('static', 'js/jquery.js')}}"></script>
+<script src="{{=URL('static', 'js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{=URL('static', 'js/modernizr-2.8.3.min.js')}}"></script>

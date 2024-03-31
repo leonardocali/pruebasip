@@ -34,24 +34,28 @@ def api_guardar_datos():
     # Lee los datos del cuerpo de la solicitud POST (en formato JSON)
     try:
         datos = json.loads(request.body.read())
+        posicion = 0
+
+        for clave in datos:
+            posicion +=1
+            valor = datos[clave]
+            if valor == '':
+                return response.json({"mensaje": 1,"posicion":posicion})
+        else:
+            existe = db((db.estudiantes.numerodocest == datos['numerodocest'])&(db.estudiantes.tipodoc == datos['tipodoc'])).select()
+            if(len(existe)>1):
+                return response.json({"mensaje": 'existe', 'tipodoc': datos['tipodoc'], 'numerodoc': datos['numerodocest']})
+            else:
+                db.estudiantes.insert(**datos)
+                return response.json({"mensaje": 'OK'})
     except ValueError:
         raise HTTP(400, "Bad Request: Datos JSON inválidos")
 
-    # Aquí puedes procesar y guardar los datos según tus necesidades
-    # Por ejemplo, guardarlos en una base de datos
-    posicion = 0
 
-    for clave in datos:
-        posicion +=1
-        valor = datos[clave]
-        if valor == '':
-            return response.json({"mensaje": 1,"posicion":posicion})
-    else:
-        db.estudiantes.insert(**datos)
-        return response.json({"mensaje": "Datos guardados exitosamente"})
+    
    
 def actualizar_datos():
-    return dict(message1="Actualizacion Estudiante")
+    return dict(message1="Actualización Estudiante")
 
 def api_consultar_datos_estudiante():
     if request.method == 'POST':  # Verifica que la solicitud sea de tipo POST
@@ -61,7 +65,7 @@ def api_consultar_datos_estudiante():
         except ValueError:
             raise HTTP(400, "Bad Request: Datos JSON inválidos")
         # Consulta del estudiante en la BD
-        registro = db(db.estudiantes.numerodoc == datos).select()
+        registro = db(db.estudiantes.numerodocest == datos).select()
         if len(registro) == 0:
             return response.json({"mensaje": 0})
         else:
@@ -95,3 +99,19 @@ def api_actualizar_datos_estudiante():
     else:
         # Maneja la posibilidad de que la solicitud no sea POST
         raise HTTP(400, "Solicitud incorrecta de consulta")
+
+def admin_salon():
+    grid = SQLFORM.grid(db.salon, create=True, editable=True, deletable=True)
+    return dict(grid=grid)
+
+def admin_materias():
+    grid = SQLFORM.grid(db.materia, create=True, editable=True, deletable=True)
+    return dict(grid=grid)
+
+def asignar_materias():
+    grid = SQLFORM.grid(db.salon_materia, create=True, editable=True, deletable=True)
+    return dict(grid=grid)
+
+def estudiantes():
+    grid = db().select(db.estudiantes.id, db.estudiantes.nombres, db.estudiantes.apellidos, db.estudiantes.tipodoc, db.estudiantes.numerodocest, db.estudiantes.grado, db.estudiantes.fecnacest, db.estudiantes.edadest, db.estudiantes.tiposanest, db.estudiantes.direstudiante, db.estudiantes.telest)
+    return dict(grid=grid)
