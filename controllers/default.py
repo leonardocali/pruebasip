@@ -100,18 +100,6 @@ def api_actualizar_datos_estudiante():
         # Maneja la posibilidad de que la solicitud no sea POST
         raise HTTP(400, "Solicitud incorrecta de consulta")
 
-def admin_salon():
-    grid = SQLFORM.grid(db.salon, create=True, editable=True, deletable=True)
-    return dict(grid=grid)
-
-def admin_materias():
-    grid = SQLFORM.grid(db.materia, create=True, editable=True, deletable=True)
-    return dict(grid=grid)
-
-def asignar_materias():
-    grid = SQLFORM.grid(db.salon_materia, create=True, editable=True, deletable=True)
-    return dict(grid=grid)
-
 def estudiantes():
     grid = db().select(db.estudiantes.id, db.estudiantes.nombres, db.estudiantes.apellidos, db.estudiantes.tipodoc, db.estudiantes.numerodocest, db.estudiantes.grado, db.estudiantes.fecnacest, db.estudiantes.edadest, db.estudiantes.tiposanest, db.estudiantes.direstudiante, db.estudiantes.telest)
     return dict(grid=grid)
