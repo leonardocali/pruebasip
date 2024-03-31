@@ -103,3 +103,22 @@ def api_actualizar_datos_estudiante():
 def estudiantes():
     grid = db().select(db.estudiantes.id, db.estudiantes.nombres, db.estudiantes.apellidos, db.estudiantes.tipodoc, db.estudiantes.numerodocest, db.estudiantes.grado, db.estudiantes.fecnacest, db.estudiantes.edadest, db.estudiantes.tiposanest, db.estudiantes.direstudiante, db.estudiantes.telest)
     return dict(grid=grid)
+
+def admin_salon():
+    button_submit = 'Guardar'
+    button_delete = 'Eliminar'
+    button_cancel = 'Cancelar'
+    grid = SQLFORM.grid(db.salon, 
+                        user_signature=False,  
+                        searchable=False,  # Permite búsqueda en la tabla
+                        paginate=10,  # Número de registros por página
+                        deletable=True,  # Permite eliminar registros
+                        editable=True,  # Permite editar registros
+                        create=True,  # Permite crear nuevos registros
+                        csv=False,  # Deshabilita la exportación CSV
+                        details=True, # Deshabilita la vista de detalles
+                        #buttonadd = button_submit,
+                        #button_delete = button_delete,
+                        #button_cancel = button_cancel,
+                        )  
+    return dict(datos=grid)

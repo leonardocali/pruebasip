@@ -192,3 +192,7 @@ db.define_table('user_system',
     Field('type_user', requires=IS_NOT_EMPTY()),
     Field('fecregest', 'datetime', default=datetime.now()),
 )
+
+db.define_table('salon',
+    Field('nombre', requires=IS_NOT_EMPTY()),
+)
