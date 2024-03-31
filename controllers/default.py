@@ -105,9 +105,7 @@ def estudiantes():
     return dict(grid=grid)
 
 def admin_salon():
-    button_submit = 'Guardar'
-    button_delete = 'Eliminar'
-    button_cancel = 'Cancelar'
+
     grid = SQLFORM.grid(db.salon, 
                         user_signature=False,  
                         searchable=False,  # Permite búsqueda en la tabla
@@ -117,8 +115,19 @@ def admin_salon():
                         create=True,  # Permite crear nuevos registros
                         csv=False,  # Deshabilita la exportación CSV
                         details=True, # Deshabilita la vista de detalles
-                        #buttonadd = button_submit,
-                        #button_delete = button_delete,
-                        #button_cancel = button_cancel,
+                        )  
+    return dict(datos=grid)
+
+def admin_materia():
+
+    grid = SQLFORM.grid(db.materias, 
+                        user_signature=False,  
+                        searchable=False,  # Permite búsqueda en la tabla
+                        paginate=10,  # Número de registros por página
+                        deletable=True,  # Permite eliminar registros
+                        editable=True,  # Permite editar registros
+                        create=True,  # Permite crear nuevos registros
+                        csv=False,  # Deshabilita la exportación CSV
+                        details=True, # Deshabilita la vista de detalles
                         )  
     return dict(datos=grid)

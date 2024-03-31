@@ -196,3 +196,7 @@ db.define_table('user_system',
 db.define_table('salon',
     Field('nombre', requires=IS_NOT_EMPTY()),
 )
+
+db.define_table('materias',
+    Field('nombre', requires=IS_NOT_EMPTY()),
+)

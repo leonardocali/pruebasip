@@ -92,3 +92,11 @@ h4 {
   text-align: center;
   font-size: 13px;
 }
+
+.contenedor-admin-salon{
+  display: flex;
+}
+
+.datos-admin-salon{
+  justify-content: center;
+}  
