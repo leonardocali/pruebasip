@@ -18,7 +18,7 @@ def api_consultar_user_system():
         if len(registro) == 0:
             return response.json({"mensaje": 0})
         else:
-           return response.json({"mensaje": 1})
+            return response.json({"mensaje": 1})
     else:
         # Maneja la posibilidad de que la solicitud no sea POST
         raise HTTP(400, "Solicitud incorrecta de consulta")
@@ -28,7 +28,7 @@ def vistaEstudiantes():
 
 #Api para realizar validacion y guardar datos en BD
 def api_guardar_datos():
-   # Asegúrate de que la solicitud sea de tipo POST
+# Asegúrate de que la solicitud sea de tipo POST
     if request.env.request_method != 'POST':
         raise HTTP(400, "Bad Request: Se espera una solicitud POST")
     # Lee los datos del cuerpo de la solicitud POST (en formato JSON)
@@ -51,9 +51,6 @@ def api_guardar_datos():
     except ValueError:
         raise HTTP(400, "Bad Request: Datos JSON inválidos")
 
-
-    
-   
 def actualizar_datos():
     return dict(message1="Actualización Estudiante")
 
@@ -91,8 +88,8 @@ def api_actualizar_datos_estudiante():
                 return response.json({"mensaje": 1,"posicion":posicion})
         # Actuliza datos del estudiante en la BD por su ID
         actualizacion = db.estudiantes(int(datos[1])).update_record(**datos[0])
-        if actualizacion :
-           return response.json({"mensaje":2}) 
+        if actualizacion:
+            return response.json({"mensaje":2}) 
         else:
             return response.json({"mensaje":3}) 
         #return response.json({"mensaje": registro})
